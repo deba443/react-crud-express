@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@300;400&family=Source+Sans+Pro:ital@0;1&display=swap');
+:root{
+    --popins:'Poppins', sans-serif;
+    --open-sans:'Open Sans', sans-serif;
+    --sans-pro: 'Source Sans Pro', sans-serif;
+    --dark: #2b2d42;
+    --light: #adb5bd;
+    --border: #dee2e6;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    width: 100%;
+    background-color: #06d6a0;
+    color:var(--dark);
+    text-align: center;
+    font-family: var(--popins);
+    padding: 20px 0px;
+    font-size: larger;
+    font-weight: bold;
+}
+main{
+    /* margin-top: 50px; */
+    max-width: 1024px;
+    margin: 50px auto;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid black;
+    padding: 5px;
+    /* background: linear-gradient(to right, #8e2de2, #4a00e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    border: 1px solid var(--border-btn);
+    box-shadow: 1px 3px 10px #e9ecef;
+}
+.text-gradient{
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.main-table{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-family: var(--open-sans);
+}
+.table{
+    width: 100%;
+
+}
+.thead{
+    background-color: var(--dark);
+    color: var(--light);
+}
+/* .thead:hover{
+    background-color: var(--dark);
+} */
+.table td, .table th{
+    padding: .75em;
+    vertical-align: top;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+.table .tbody tr:hover{
+    background-color:#06d6a0 ;
+}
+.input{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+    flex-direction: column;
+}
+.input-group{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.input-group__content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    /* flex-direction: column; */
+
+}
+.input-group__content-main{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    gap: 10px;
+}
+.status-label{
+    margin-right: 6.8px;
+}
+input{
+    border-bottom: 1px solid black;
+    outline:none;
+}
+input:active{
+    border-bottom: 1px solid black;
+    outline:none;
+    padding: 0;
+}
