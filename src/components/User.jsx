@@ -4,11 +4,13 @@ import { FaUserPlus } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import Modal from "./Modal"
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
+import {set_single_user} from "../redux/slice"
+import { useDispatch } from "react-redux";
 const User = () => {
     // let val;
-    // const dispatch=useDispatch()
+    const dispatch=useDispatch()
     const [data, setData] = useState([])
-    const[updateData,setUpdateData]=useState({})
+    // const[updateData,setUpdateData]=useState({})
     // let id;
     const getData = () => {
         // if (data.length===0) {
@@ -34,13 +36,11 @@ const User = () => {
         setOpen(false);
         setIde(false)
     }
+
     const editHandler = (e,idt) => {
         e.preventDefault();
         let result=data.find((item)=>item._id===idt)
-        // dispatch(single_user_data(result))
-        // console.log(result)
-        setUpdateData({...result})
-        // console.log(updateData)
+        dispatch(set_single_user(result))
         setIde(true)
         setOpen(true)
     }
@@ -48,28 +48,21 @@ const User = () => {
         e.preventDefault()
         try{
             let result=axios.delete(`http://localhost:8080/api/users/${id}`)
+            getData()
         }
         catch(err){
             console.log(err)
         }
         getData()
+        
     }
-    // console.log(data)
-    // if(data.length){
-    //     console.log('deba')
-    // }
-    // else{
-    //     console.log('prasad')
-    // }
-    // console.log(val)
-    // console.log(updateData)
     return (
         <div>
             <header>
                 <h1>User Management</h1>
             </header>
-            {open && <Modal cancel={closeModal} ide={ide} getData={getData}  updateData={updateData} />}
-            {open && ide && <Modal  cancel={closeModal} ide={ide} getData={getData} updateData={updateData} />}
+            {open && <Modal cancel={closeModal} ide={ide} getData={getData} />}
+            {open && ide && <Modal  cancel={closeModal} ide={ide} getData={getData}/>}
             <main>
                 <button className="button text-gradient" onClick={(e) => {
                     e.preventDefault();
