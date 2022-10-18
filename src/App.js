@@ -1,13 +1,27 @@
 // import logo from './logo.svg';
 // import './App.css';
-import Modal from "./components/Modal"
+import Login from "./components/authentication/Login";
+// import Modal from "./components/Modal"
 import User from "./components/User"
+// import LogInModal from "./components/authentication/LogInModal";
+import { Routes, Route, Navigate } from 'react-router';
+import Protected from "./components/Protected";
+
 function App() {
   return (
     <div className="App">
       {/* <h2>Hey it's me</h2>s */}
-      <User/>
+      {/* <User/> */}
+      {/* <Login/> */}
       {/* <Modal/> */}
+      {/* <LogInModal/> */}
+      <Routes>
+        <Route path='/' element={<Login/>}/>
+        <Route element={<Protected/>}>
+          <Route path='/home' element={<User/>} />
+        </Route>
+      </Routes>
+      {/* <h1>Hey it's me</h1> */}
     </div>
   );
 }
