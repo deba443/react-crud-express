@@ -87,7 +87,7 @@
   border-radius: 5px;
   gap: 5px;
 } */
-button {
+.logIn {
   margin-top: 0px;
   width: 100%;
   background-color: #191f5d;
@@ -124,5 +124,28 @@ button {
   align-items: flex-start;
   gap: 7px;
   flex-direction: column;
+}
+.input-signup{
+  border-bottom: 1px solid black;
+  outline:none;
+}
+.input-signup:active{
+  border-bottom: 1px solid black;
+  outline:none;
+  padding: 0;
+}
+.input-group-signup{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+.input-container-signup{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 }
 /* Footer */

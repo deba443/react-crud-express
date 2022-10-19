@@ -8,13 +8,22 @@ import {set_single_user} from "../redux/slice"
 import { useDispatch } from "react-redux";
 const User = () => {
     // let val;
+    let val=JSON.parse(localStorage.getItem("auth"))
+    // let token=val.token
+    // console.log(val)
     const dispatch=useDispatch()
     const [data, setData] = useState([])
     // const[updateData,setUpdateData]=useState({})
     // let id;
     const getData = () => {
         // if (data.length===0) {
-        axios.get("http://localhost:8080/api/users").then((res) => {
+        // console.log(val.token)
+        axios.get("http://localhost:8080/api/users",{
+            headers:{
+                Authorization:`Bearer ${val.token}`
+            }
+        }).then((res) => {
+            console.log(res)
             setData(res.data)
             // len=res.data.length;
             // console.log(res.data)
@@ -47,7 +56,11 @@ const User = () => {
     const deleteHandler = async (e,id) => {
         e.preventDefault()
         try{
-            let result=axios.delete(`http://localhost:8080/api/users/${id}`)
+            let result=axios.delete(`http://localhost:8080/api/users/${id}`,{
+                headers:{
+                    Authorization:`Bearer ${val.token}`
+                }
+            })
             getData()
         }
         catch(err){

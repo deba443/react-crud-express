@@ -11,7 +11,7 @@ const Login = () => {
     //     emailError:'',
     //     passwordError:'',
     // })
-
+    localStorage.setItem('auth',JSON.stringify({token:null}))
     const navigate=useNavigate();
     const [input, setInput] = useState({
         emailData: '',
@@ -45,7 +45,7 @@ const Login = () => {
                     email:input.emailData,
                     password:input.passwordData
                 })
-                console.log(results.data.user,results.data.token)
+                // console.log(results.data.user,results.data.token)
                 localStorage.setItem("auth",JSON.stringify(results.data))
                 navigate('/home')
             }

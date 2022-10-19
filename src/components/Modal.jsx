@@ -6,6 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { useSelector } from "react-redux";
 const Modal = (props) => {
     const {posts}=useSelector((state)=>state.post)
+    let val=JSON.parse(localStorage.getItem("auth"))
     let{_id,name,email,gender,status}=posts[0]
     // if(posts.length){
         
@@ -32,7 +33,13 @@ const Modal = (props) => {
                 email: input.email,
                 gender: input.gender,
                 status: input.status
-            })
+            },
+            {
+                headers:{
+                    Authorization:`Bearer ${val.token}`
+                }
+            }
+            )
         }
         catch (err) {
             console.log(err)
@@ -43,7 +50,12 @@ const Modal = (props) => {
     const updateUser=async (e)=>{
         e.preventDefault()
         try{
-            axios.put(`http://localhost:8080/api/users/${_id}`,updateInput)
+            axios.put(`http://localhost:8080/api/users/${_id}`,updateInput,{
+                headers:{
+                    Authorization:`Bearer ${val.token}`
+                }
+
+            })
             props.getData()
 
         }
@@ -69,16 +81,16 @@ const Modal = (props) => {
                             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                  <p class="text-center font-bold mb-1">Add User</p>
 
-                                <div className="input">
+                                <div className="input-data">
                                     <div className="input-group">
                                         <FaUserPlus />
-                                        <input type="text" placeholder="Deba p nayak"  value = {input.name} onChange={(e) => {
+                                        <input className="input" type="text" placeholder="Deba p nayak"  value = {input.name} onChange={(e) => {
                                             setInput({ ...input, name: e.target.value })
                                         }} />
                                     </div>
                                     <div className="input-group">
                                         <MdEmail />
-                                        <input type="text" placeholder="heyme@gmail.com" value={input.email} onChange={(e) => {
+                                        <input type="text" className="input" placeholder="heyme@gmail.com" value={input.email} onChange={(e) => {
                                             setInput({ ...input, email: e.target.value })
                                         }} />
                                     </div>

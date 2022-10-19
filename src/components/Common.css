@@ -75,7 +75,7 @@ main{
 .table .tbody tr:hover{
     background-color:#06d6a0 ;
 }
-.input{
+.input-data{
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -105,12 +105,8 @@ main{
 .status-label{
     margin-right: 6.8px;
 }
-input{
+.input{
     border-bottom: 1px solid black;
     outline:none;
 }
-input:active{
-    border-bottom: 1px solid black;
-    outline:none;
-    padding: 0;
-}
+        

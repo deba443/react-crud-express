@@ -8,7 +8,7 @@ const Protected=()=>{
     const navigate=useNavigate()
     // let token=value.token
     useEffect(()=>{
-        console.log(value.token)
+        // console.log(value.token)
         if(!value.token){
             // Navigate()
             navigate('/')
