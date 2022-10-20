@@ -56,14 +56,12 @@ const Modal = (props) => {
                 }
 
             })
-            props.getData()
-
         }
         catch(err){
             console.log(err)
-            props.getData()
+            // props.getData()
         }
-        
+        props.getData()
         props.cancel()
     }
     return (

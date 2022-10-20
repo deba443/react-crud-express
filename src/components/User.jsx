@@ -4,23 +4,23 @@ import { FaUserPlus } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import Modal from "./Modal"
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
-import {set_single_user} from "../redux/slice"
+import { set_single_user } from "../redux/slice"
 import { useDispatch } from "react-redux";
 const User = () => {
     // let val;
-    let val=JSON.parse(localStorage.getItem("auth"))
+    let val = JSON.parse(localStorage.getItem("auth"))
     // let token=val.token
     // console.log(val)
-    const dispatch=useDispatch()
+    const dispatch = useDispatch()
     const [data, setData] = useState([])
     // const[updateData,setUpdateData]=useState({})
     // let id;
     const getData = () => {
         // if (data.length===0) {
         // console.log(val.token)
-        axios.get("http://localhost:8080/api/users",{
-            headers:{
-                Authorization:`Bearer ${val.token}`
+        axios.get("http://localhost:8080/api/users", {
+            headers: {
+                Authorization: `Bearer ${val.token}`
             }
         }).then((res) => {
             console.log(res)
@@ -46,28 +46,29 @@ const User = () => {
         setIde(false)
     }
 
-    const editHandler = (e,idt) => {
+    const editHandler = (e, idt) => {
         e.preventDefault();
-        let result=data.find((item)=>item._id===idt)
+        let result = data.find((item) => item._id === idt)
         dispatch(set_single_user(result))
         setIde(true)
         setOpen(true)
     }
-    const deleteHandler = async (e,id) => {
+    console.log(val.user)
+    const deleteHandler = async (e, id) => {
         e.preventDefault()
-        try{
-            let result=axios.delete(`http://localhost:8080/api/users/${id}`,{
-                headers:{
-                    Authorization:`Bearer ${val.token}`
+        try {
+            let result = axios.delete(`http://localhost:8080/api/users/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${val.token}`
                 }
             })
             getData()
         }
-        catch(err){
+        catch (err) {
             console.log(err)
         }
         getData()
-        
+
     }
     return (
         <div>
@@ -75,7 +76,7 @@ const User = () => {
                 <h1>User Management</h1>
             </header>
             {open && <Modal cancel={closeModal} ide={ide} getData={getData} />}
-            {open && ide && <Modal  cancel={closeModal} ide={ide} getData={getData}/>}
+            {open && ide && <Modal cancel={closeModal} ide={ide} getData={getData} />}
             <main>
                 <button className="button text-gradient" onClick={(e) => {
                     e.preventDefault();
@@ -85,6 +86,7 @@ const User = () => {
                     <p>New User</p>
                     <FaUserPlus />
                 </button>
+                {val.user.profilepicture && <img src={`http://localhost:8080/${val.user.profilepicture}`} alt="profilepicture" />}
                 <div className="main-table">
                     <table className="table">
                         <thead className="thead">
@@ -105,13 +107,13 @@ const User = () => {
                                         <td>{item.email}</td>
                                         <td>{item.gender}</td>
                                         <td>{item.status}</td>
-                                        <td><button className="text-gradient" onClick={(e)=>{
+                                        <td><button className="text-gradient" onClick={(e) => {
                                             // console.log(item._id)
-                                            editHandler(e,item._id);
+                                            editHandler(e, item._id);
                                         }}><MdModeEditOutline /></button></td>
-                                        <td><button className="text-gradient" onClick={(e)=>
-                                            deleteHandler(e,item._id)
-                                            }><MdDelete /></button></td>
+                                        <td><button className="text-gradient" onClick={(e) =>
+                                            deleteHandler(e, item._id)
+                                        }><MdDelete /></button></td>
                                     </tr>
                                 )
                             })}
