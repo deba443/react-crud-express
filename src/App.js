@@ -6,6 +6,7 @@ import User from "./components/User"
 // import LogInModal from "./components/authentication/LogInModal";
 import { Routes, Route, Navigate } from 'react-router';
 import Protected from "./components/Protected";
+import Demo from "./components/Demo"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path='/home' element={<User/>} />
         </Route>
       </Routes>
+      {/* <Demo/>s */}
       {/* <h1>Hey it's me</h1> */}
     </div>
   );
