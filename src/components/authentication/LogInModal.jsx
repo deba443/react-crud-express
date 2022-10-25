@@ -95,7 +95,7 @@ const LogInModal = (props) => {
                                         <div className="input-group-signup">
                                             <RiLockPasswordFill />S
                                             <input type="file" className="input-signup input-signup-file" onChange={(e)=>{
-                                                setInput({...input,profilepicture:e.target.files[0].name})
+                                                setInput({...input,profilepicture:e.target.files[0]})
                                             }} />
                                         </div>
 
