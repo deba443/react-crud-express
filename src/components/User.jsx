@@ -86,7 +86,7 @@ const User = () => {
                     <p>New User</p>
                     <FaUserPlus />
                 </button>
-                {val.user.profilepicture && <img src={`http://localhost:8080/${val.user.profilepicture}`} alt="profilepicture" />}
+                {val.user && <img src={`http://localhost:8080/${val.user.profilepicture}`} alt="profilepicture" />}
                 <div className="main-table">
                     <table className="table">
                         <thead className="thead">
